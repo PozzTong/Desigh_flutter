@@ -1,0 +1,8 @@
+How to create Mobile Project
+1- Make folder in Drive D
+2- Go to CMD command
+3- Use command like this
+	1. D:
+	2. D:\name of folder(ex. D:\Etec\Project2\flutter)
+	3. cd D:\name of folder
+	4. flutter create nameofproject_vscode (flutter create first_flutter_vscode)
