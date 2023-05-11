@@ -22,7 +22,7 @@ class Prod extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.blue,
+            //color: Colors.blue,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
@@ -31,7 +31,7 @@ class Prod extends StatelessWidget {
                 flex: 3,
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      //color: Colors.blue,
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10)),
@@ -61,16 +61,16 @@ class Prod extends StatelessWidget {
                           children: [
                             Text(
                               '\$ ${product.price}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                               ),
                             ),
                             product.discount == 0.0
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Text(
                                     '-${product.discount}%',
-                                    style: TextStyle(color: Colors.red),
+                                    style: const TextStyle(color: Colors.red),
                                   )
                           ],
                         ),
@@ -95,7 +95,7 @@ class Prod extends StatelessWidget {
                                 ),
                                 Text(
                                   product.rate.toString(),
-                                  style: TextStyle(color: Colors.red),
+                                  style: const TextStyle(color: Colors.red),
                                 )
                               ],
                             ),

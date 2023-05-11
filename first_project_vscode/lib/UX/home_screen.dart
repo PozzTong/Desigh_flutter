@@ -14,6 +14,7 @@ class MyScreen01 extends StatefulWidget {
 
 class _MyScreen01State extends State<MyScreen01> {
   TextEditingController searchController = TextEditingController();
+  List<ProductModel> filterList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +58,14 @@ class _MyScreen01State extends State<MyScreen01> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: searchController,
+              onChanged: (value) {
+                setState(() {
+                  filterList = products
+                      .where((element) => element.name.contains(value))
+                      .toList();
+                });
+              },
               decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.search),
@@ -77,9 +86,14 @@ class _MyScreen01State extends State<MyScreen01> {
                   crossAxisCount: 2, //31:08
                   childAspectRatio: 10 / 15,
                   children: List.generate(
-                      products.length,
+                      searchController.text.isEmpty || filterList.isEmpty
+                          ? products.length
+                          : filterList.length,
                       (index) => Prod(
-                            product: products[index],
+                            product: searchController.text.isEmpty ||
+                                    filterList.isEmpty
+                                ? products[index]
+                                : filterList[index],
                           ))))
         ],
       ),

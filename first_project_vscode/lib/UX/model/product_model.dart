@@ -75,7 +75,7 @@ List<ProductModel> products = [
       price: 125,
       qty: 1,
       rate: 4,
-      discount: 0,
+      discount: 10,
       description: 'Apple-Watch-Apple-Watch-Iwatch-PNG-Image - FAST EXPO 2020',
       image:
           'https://th.bing.com/th/id/R.c8eb44b5a439606d4615ef2a8d6dfa6d?rik=DfSeBbR%2fJMET6w&pid=ImgRaw&r=0',
