@@ -11,7 +11,10 @@
 //import 'package:first_project_vscode/Widget%20with%20Packet/image_slide_show.dart';
 //import 'package:first_project_vscode/Responsive/screen1.dart';
 //import 'package:first_project_vscode/UX/exam1.dart';
-import 'package:first_project_vscode/UX/home_screen.dart';
+//import 'package:first_project_vscode/Log%20Form/auth/log_form.dart';
+//import 'package:first_project_vscode/Log%20Form/auth/signin_screen.dart';
+import 'package:first_project_vscode/Log%20Form/dashboard/view/main_dashboard.dart';
+//import 'package:first_project_vscode/UX/home_screen.dart';
 //import 'package:first_project_vscode/UX/ux_ui.dart';
 //import 'package:first_project_vscode/open_camera.dart';
 //import 'package:first_project_vscode/test_btn.dart';
@@ -29,11 +32,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MyScreen01(),
+      debugShowCheckedModeBanner: false,
+      
+      home: MainDashboard(),
     );
   }
 }
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -52,28 +56,27 @@ class _HomePageState extends State<HomePage> {
         leading: const FlutterLogo(),
         centerTitle: true,
         title: const Text('Hello'),
-        actions: const [Icon(Icons.search),Icon(Icons.notifications)],
+        actions: const [Icon(Icons.search), Icon(Icons.notifications)],
       ),
-      body: Column(
+      body: const Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Hello',
             style: TextStyle(
-              fontSize: 25,
-              color: Color.fromARGB(255, 230, 20, 5),
-              fontWeight: FontWeight.bold
-            ),
+                fontSize: 25,
+                color: Color.fromARGB(255, 230, 20, 5),
+                fontWeight: FontWeight.bold),
           ),
-          const Text(
+          Text(
             'Basic',
             style: TextStyle(
                 fontSize: 25,
                 color: Color.fromARGB(255, 230, 20, 5),
                 fontWeight: FontWeight.bold),
           ),
-          const Text(
+          Text(
             'Dart',
             style: TextStyle(
                 fontSize: 25,
@@ -82,14 +85,13 @@ class _HomePageState extends State<HomePage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
+            children: [
               Text(
                 'Hello',
                 style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold
-                ),
+                    fontSize: 30,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold),
               ),
               Text(
                 'Basic',
@@ -108,16 +110,15 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           Row(
-           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
               Text(
                 'Hello',
                 style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.yellow
-                ),
-                )
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.yellow),
+              )
             ],
           ),
         ],

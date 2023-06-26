@@ -28,11 +28,16 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  badges: ^3.1.1
+  
   flutter:
     sdk: flutter
+  badges: ^3.1.1
   flutter_image_slideshow: ^0.1.5
   image_picker: ^0.8.7+1
+  shared_preferences: ^2.1.0
+  sqflite: ^2.2.6
+  path_provider: ^2.0.13
+  flutter_slidable: ^3.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
