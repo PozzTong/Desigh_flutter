@@ -32,7 +32,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
   CategoryModel? categoryModel;
   // @override
   // void initState() {
-  //   // TODO: implement initState
+  //   
   //   super.initState();
   //   getCategory();
   // }

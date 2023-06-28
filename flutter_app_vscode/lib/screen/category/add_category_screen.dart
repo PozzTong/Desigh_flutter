@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_vscode/database/category_connection.dart';
+import 'package:flutter_app_vscode/global/constant/data_fiels.dart';
 import 'package:flutter_app_vscode/model/category_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -23,7 +25,7 @@ class _AddCategoryState extends State<AddCategory> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    // TO DO: implement initState
     super.initState();
     getCategory();
   }
@@ -59,10 +61,11 @@ class _AddCategoryState extends State<AddCategory> {
                 backgroundColor: Colors.white,
                 onPressed: () async {
                   if (controller.text.isNotEmpty) {
-                    await CategoryDB().insertCategory(CategoryModel(
-                        id: DateTime.now().microsecondsSinceEpoch,
-                        name: controller.text)).whenComplete(() =>
-                         getCategory());
+                    await CategoryDB()
+                        .insertCategory(CategoryModel(
+                            id: DateTime.now().microsecondsSinceEpoch,
+                            name: controller.text))
+                        .whenComplete(() => getCategory());
                   }
                 },
                 child: const Icon(
@@ -86,14 +89,24 @@ class _AddCategoryState extends State<AddCategory> {
                   dismissible: null,
                   children: [
                     SlidableAction(
-                      onPressed: (context) {},
+                      onPressed: (context) async {
+                        await CategoryDB()
+                            .deleteCategory(categoryList[index].id)
+                            .whenComplete(() => getCategory());
+                      },
                       backgroundColor: const Color(0xFFFE4A49),
                       foregroundColor: Colors.white,
                       icon: Icons.delete,
                       label: 'Delete',
                     ),
                     SlidableAction(
-                      onPressed: (context) {},
+                      onPressed: (context) {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) =>
+                              buildDialog(categoryList[index]),
+                        );
+                      },
                       backgroundColor: const Color(0xFF21B7CA),
                       foregroundColor: Colors.white,
                       icon: Icons.edit_note_rounded,
@@ -109,6 +122,49 @@ class _AddCategoryState extends State<AddCategory> {
           ),
         )
       ]),
+    );
+  }
+
+  Widget buildDialog(CategoryModel categoryModel) {
+    var categoryController = TextEditingController();
+    categoryController.text = categoryModel.name;
+
+    return SizedBox(
+      height: 350,
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "Update Category",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: categoryController,
+              decoration:const InputDecoration(
+                  border: OutlineInputBorder(), hintText: "Category Name"),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CupertinoButton(
+                color: Theme.of(context).primaryColor,
+                child: const Text("save"),
+                onPressed: () async {
+                  await CategoryDB()
+                      .updateCategory(CategoryModel(
+                          id: categoryModel.id, name: categoryController.text))
+                      .then((value) => Navigator.pop(context))
+                      .then((value) => getCategory());
+                }),
+          )
+        ],
+      ),
     );
   }
 }
