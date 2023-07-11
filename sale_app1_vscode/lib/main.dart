@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 6,
                     childAspectRatio: 7 / 8,
-                    children: List.generate(8, (index) => const ProductCard()),
+                    children: List.generate(5, (index) => const ProductCard()),
                   ),
                 ))
               ],
